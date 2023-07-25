@@ -11,26 +11,28 @@ ca=certifi.where()
 
 @dataclass
 class DataIngestionconfig:
+    
     train_data_path=os.path.join('artifacts','train.csv')
     test_data_path=os.path.join('artifacts','test.csv')
     raw_data_path=os.path.join('artifacts','raw.csv')
 
 class DataIngestion:
     def __init__(self):
-        self.data_Ingestion_config=DataIngestionConfig()
+
+        self.data_Ingestion_config=DataIngestionconfig()
 
     def initiate_data_ingestion(self):
         try:
             logging.info("Data Ingestion is inititated")
+            os.makedirs(os.path.dirname(self.data_Ingestion_config.raw_data_path),exist_ok=True)
             uri = "mongodb+srv://abhisheknishad:abhisheknishad@cluster0.rgawbxa.mongodb.net/?retryWrites=true&w=majority"
             client=MongoClient(uri,tlsCAFile=ca)
 
             DATABASE_NAME="Loan_Defaulter"
             COLLECTION_NAME="loan_data"
-            collection=client[db_name][collection_name]
-            logging.info("Database and collection is selected")
+            collection=client[DATABASE_NAME][COLLECTION_NAME]
+            logging.info("Database and collection is selected")            
             df=pd.DataFrame(list(collection.find()))
-
             if '_id' in df.columns:
                 df=df.drop('_id',axis=1)
             logging.info("Dataframe has been retrieved from MongoDB")
@@ -40,10 +42,10 @@ class DataIngestion:
             train_data.to_csv(self.data_Ingestion_config.train_data_path,index=False)
             test_data.to_csv(self.data_Ingestion_config.test_data_path,index=False)
             logging.info("Files is saved in system")
-            return(
-                self.data_Ingestion_config.train_data_path,
-                self.data_Ingestion_config.test_data_path
+
+            return(self.data_Ingestion_config.train_data_path,
+                    self.data_Ingestion_config.test_data_path)
 
         except Exception as e:
-            logging.info("Error Occured in Data Ingestion ")
             raise CustomException(e,sys)
+            
