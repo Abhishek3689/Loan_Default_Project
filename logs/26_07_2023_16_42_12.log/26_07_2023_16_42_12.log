@@ -1,0 +1,17 @@
+[ 2023-07-26 16:42:13,530] 187 werkzeug -WARNING- * Debugger is active!
+[ 2023-07-26 16:42:13,607] 187 werkzeug -INFO- * Debugger PIN: 748-086-128
+[ 2023-07-26 16:42:13,950] 187 werkzeug -INFO-127.0.0.1 - - [26/Jul/2023 16:42:13] "GET /predict HTTP/1.1" 200 -
+[ 2023-07-26 16:42:14,201] 187 werkzeug -INFO-127.0.0.1 - - [26/Jul/2023 16:42:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+[ 2023-07-26 16:42:29,103] 23 root -INFO-form input is initiated 
+[ 2023-07-26 16:42:29,180] 40 root -INFO-form input completed
+[ 2023-07-26 16:42:30,711] 53 root -INFO-Dataframe has been gathered
+[ 2023-07-26 16:42:30,825] 42 root -INFO-   credit.policy    purpose  int.rate  installment  log.annual.inc  ...  revol.bal  revol.util  inq.last.6mths  delinq.2yrs  pub.rec
+0            0.0  all_other       0.0          1.0             1.0  ...        1.0         1.0             1.0          1.0      1.0
+
+[1 rows x 13 columns]
+[ 2023-07-26 16:42:30,834] 43 root -INFO-test data is converted into dataframe
+[ 2023-07-26 16:42:34,735] 67 root -INFO-Model and preprocessor has been loaded
+[ 2023-07-26 16:42:34,906] 70 root -INFO-Data has been transformed
+[ 2023-07-26 16:42:35,033] 72 root -INFO-The Result of input paramters is 0.0
+[ 2023-07-26 16:42:35,040] 187 werkzeug -INFO-127.0.0.1 - - [26/Jul/2023 16:42:35] "POST /predict HTTP/1.1" 200 -
+[ 2023-07-26 16:42:35,147] 187 werkzeug -INFO-127.0.0.1 - - [26/Jul/2023 16:42:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
